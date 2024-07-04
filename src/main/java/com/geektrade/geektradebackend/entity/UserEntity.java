@@ -79,4 +79,13 @@ public class UserEntity {
         street = dto.getStreet();
         return this;
     }
+
+    @Override
+    public String toString() {
+        return "UserEntity{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                // Do not include listings to avoid recursion
+                '}';
+    }
 }

@@ -79,6 +79,11 @@ public class UserServiceImpl implements UserDetailsService {
         return userRepository.save(userEntity).toPojo();
     }
 
+    public UserEntity getUserEntity() {
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        return userRepository.findUserByUsername(username).orElseThrow(() -> new UsernameNotFoundException(username));
+    }
+
     public void checkUserExists(UserSignupDto dto) {
         UserEntity userEntity = findByUsername(dto.getEmail());
         if (!passwordEncoder.matches(dto.getPassword(), userEntity.getPassword()))
@@ -109,7 +114,7 @@ public class UserServiceImpl implements UserDetailsService {
         return userRepository.save(updatedUser).toPojo();
     }
 
-    private String getLoggedUserName() {
+    public String getLoggedUserName() {
         return SecurityContextHolder.getContext().getAuthentication().getName();
     }
 

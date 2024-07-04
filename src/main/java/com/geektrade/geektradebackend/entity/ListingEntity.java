@@ -41,6 +41,9 @@ public class ListingEntity {
     @Column(name = "created_at", nullable = false)
     private LocalDateTime createdAt;
 
+    @Column
+    private Long primaryImageId;
+
     public Listing toPojo() {
         Listing listing = new Listing();
         listing.setId(id);
@@ -50,7 +53,11 @@ public class ListingEntity {
         listing.setCategoryId(categoryId);
         listing.setQuality(quality);
         listing.setDescription(description);
+        listing.setCreatedAt(createdAt);
         listing.setUser(user.toPojo());
+        if (primaryImageId != null) {
+            listing.setPrimaryImageId(primaryImageId);
+        }
 
         return listing;
     }

@@ -10,6 +10,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
+import org.springframework.security.config.annotation.web.configurers.LogoutConfigurer;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
@@ -58,13 +59,13 @@ public class SecurityConfig {
                                 "/api/user/signup",
                                 "/api/user/login",
                                 "/api/categories",
-                                "/api/user/profile-image/**"
+                                "/api/user/profile-image/**",
+                                "/api/listings/**",
+                                "/api/listings"
                         ).permitAll()
                 )
                 .authorizeHttpRequests((requests) -> requests.anyRequest().authenticated())
-                .logout((logout) -> logout
-                        .permitAll()
-                );
+                .logout(LogoutConfigurer::permitAll);
         http.addFilterBefore(authenticationTokenFilterBean(), UsernamePasswordAuthenticationFilter.class);
         return http.build();
     }

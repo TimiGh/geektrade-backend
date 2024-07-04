@@ -2,10 +2,13 @@ package com.geektrade.geektradebackend.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 @Entity
 @Table(name = "listing_image")
-@Data
 public class ListingImageEntity {
     @Id
     @GeneratedValue
@@ -16,6 +19,6 @@ public class ListingImageEntity {
     @Column(name = "is_primary", nullable = false)
     private Boolean isPrimary;
 
-    @Column(nullable = false, columnDefinition = "text")
+    @Column(columnDefinition = "text")
     private String content;
 }

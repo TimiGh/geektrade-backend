@@ -11,4 +11,8 @@ public class SearchDto {
     private Long priceMin;
     private Long priceMax;
     private String quality;
+
+    public SearchDto() {
+
+    }
 }

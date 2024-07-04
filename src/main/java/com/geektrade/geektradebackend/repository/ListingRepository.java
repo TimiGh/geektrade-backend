@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 public interface ListingRepository extends JpaRepository<ListingEntity, Long> {
 
     @Query("select l from ListingEntity l where " +
-            "(:term IS NULL OR l.title LIKE %:term%)" +
+            "(:term IS NULL OR LOWER(l.title) LIKE %:term%)" +
             "AND (:categoryId IS NULL OR l.categoryId = :categoryId)" +
             "AND (:quality IS NULL OR l.quality = :quality)" +
             "AND (:priceMin IS NULL OR l.price >= :priceMin)" +
@@ -20,4 +20,6 @@ public interface ListingRepository extends JpaRepository<ListingEntity, Long> {
 
 
     Page<ListingEntity> findAllByUser_Id(Long userId, Pageable pageable);
+
+    Page<ListingEntity> findAllByUser_Username(String username, Pageable pageable);
 }

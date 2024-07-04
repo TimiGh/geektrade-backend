@@ -18,3 +18,7 @@ spring:
   data:
     rest:
       base-path: /api
+
+open-ai:
+#  api-key: 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
+  api-key: sk-proj-lyONoB6qRjGImh4xT5rJT3BlbkFJg0saHhsQpJzGFan4VVJ9

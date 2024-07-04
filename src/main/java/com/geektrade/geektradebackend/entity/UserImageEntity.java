@@ -3,10 +3,6 @@ package com.geektrade.geektradebackend.entity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.web.multipart.MultipartFile;
-
-import java.io.IOException;
-import java.util.Base64;
 
 @Getter
 @Setter
@@ -22,12 +18,4 @@ public class UserImageEntity {
 
     @Column(columnDefinition = "text")
     private String content;
-
-//    public UserImageEntity create(MultipartFile file, UserEntity userEntity) throws IOException {
-//
-//        content =  ;
-//        user = userEntity;
-//
-//        return this;
-//    }
 }
